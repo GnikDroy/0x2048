@@ -34,8 +34,7 @@ Make sure that the requirements are met.
 This installs the necessary libraries under linux.
 
 ### Windows
-If you are using Windows you can download the libraries by going to the
-SDL official website.
+If you are using Windows, you can download the libraries <a href="https://www.libsdl.org/download-2.0.php">here</a>.
 
 
 ## How to compile
