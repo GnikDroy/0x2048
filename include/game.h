@@ -9,9 +9,6 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
 
-#define SCREEN_WIDTH 500
-#define SCREEN_HEIGHT 600
-
 /**
  * @brief Initializes the SDL window.
  *
@@ -35,7 +32,7 @@ bool initSDL(SDL_Window **gWindow,SDL_Renderer** gRenderer);
  * 
  * @param gWindow The window of the game.
  */
-void SDLclose(SDL_Window* gWindow);
+void SDLclose(SDL_Window** gWindow);
 
 /**
  * @brief Draws text centered inside a rect. 
@@ -97,7 +94,7 @@ void display_text(SDL_Renderer* gRenderer,const char* text,int size);
  * @param font The font for the tiles
  * @param matrix The game matrix.
  */
-void draw_matrix(SDL_Renderer* gRenderer,unsigned char matrix[][SIZE], TTF_Font* font);
+void draw_matrix(SDL_Renderer* gRenderer, Matrix matrix, TTF_Font* font);
 
 /**
  * @brief Draws the new game button. 
@@ -108,7 +105,7 @@ void draw_matrix(SDL_Renderer* gRenderer,unsigned char matrix[][SIZE], TTF_Font*
  * @param font The font for the button
  * @param matrix The game matrix. Needed to reset game.
  */
-void draw_button(SDL_Renderer* gRenderer,unsigned char matrix[][SIZE], TTF_Font* font);
+void draw_button(SDL_Renderer* gRenderer, Matrix matrix, TTF_Font* font);
 
 /**
  * @brief Handles the action of New Game button. 
@@ -117,11 +114,10 @@ void draw_button(SDL_Renderer* gRenderer,unsigned char matrix[][SIZE], TTF_Font*
  * had occured.
  * Function is run if left mouse button is released 
  * 
- * @param gRenderer The renderer for the game
  * @param e The mouse event
  * @param matrix The game matrix.
  */
-void button_action(SDL_Event e,unsigned char matrix[][SIZE]);
+void button_action(SDL_Event e, Matrix matrix);
 
 /**
  * @brief Draws the current game score
@@ -132,7 +128,7 @@ void button_action(SDL_Event e,unsigned char matrix[][SIZE]);
  * @param font The font for the tiles
  * @param matrix The game matrix.
  */
-void draw_score(SDL_Renderer* gRenderer,unsigned char matrix[][SIZE], TTF_Font* font);
+void draw_score(SDL_Renderer* gRenderer, Matrix matrix, TTF_Font* font);
 
 /**
  * @brief Draws everything for the game and renders it to screen. 
@@ -144,16 +140,15 @@ void draw_score(SDL_Renderer* gRenderer,unsigned char matrix[][SIZE], TTF_Font* 
  * @param font The font for the tiles
  * @param matrix The game matrix.
  */
-void render_game(SDL_Renderer* gRenderer,unsigned char matrix[][SIZE], TTF_Font* font);
+void render_game(SDL_Renderer* gRenderer, Matrix matrix, TTF_Font* font);
 
 /**
  * @brief This is the main game loop that handles all events and drawing 
  * 
  * @param gRenderer The renderer for the game
- * @param font The font for the tiles
  * @param matrix The game matrix.
  */
-void gameLoop(unsigned char matrix[][SIZE],SDL_Renderer* gRenderer);
+void gameLoop(Matrix matrix,SDL_Renderer* gRenderer);
 
 /**
  * @brief Handles keyboard presses that correspond with the arrowkeys. 
@@ -163,8 +158,8 @@ void gameLoop(unsigned char matrix[][SIZE],SDL_Renderer* gRenderer);
  * and resets the board if game over. 
  * 
  * @param gRenderer The renderer for the game
- * @param font The font for the tiles
+ * @param e A Keyup event.
  * @param matrix The game matrix.
  */
-void handle_move(SDL_Event e,unsigned char matrix[][SIZE], SDL_Renderer * gRenderer);
+void handle_move(SDL_Event e, Matrix matrix, SDL_Renderer * gRenderer);
 

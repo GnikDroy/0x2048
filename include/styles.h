@@ -21,14 +21,44 @@
  */
  
 //Screen dimension constants
+
+/** @def SCREEN_WIDTH
+ * The width of the window
+ */ 
 #define SCREEN_WIDTH 500
+
+/** @def SCREEN_HEIGHT
+ * The height of the window
+ */ 
 #define SCREEN_HEIGHT 600
+
+
+/** @def SCREEN_PAD
+ * The padding to use while drawing elements to window
+ */ 
 #define SCREEN_PAD 10
 
 //FONT settings
+
+/** @def FONT_PATH
+ * The path to the ttf font used by the game.
+ */ 
 #define FONT_PATH "UbuntuMono-R.ttf"
+
+
+/** @def TITLE_FONT_SIZE
+ * The font size used while displaying "2048" at the start of game.
+ */ 
 #define TITLE_FONT_SIZE 200
+
+/** @def GOVER_FONT_SIZE
+ * The font size used while displaying "Game Over" at the end of game.
+ */ 
 #define GOVER_FONT_SIZE 100  //Game Over font size
+
+/** @def CELL_FONT_SIZE
+ * The font size used while displaying each number inside the cells
+ */ 
 #define CELL_FONT_SIZE 40
 
 struct COLOR{
@@ -37,11 +67,26 @@ struct COLOR{
     char b;
     char a;
 };
-struct COLOR g_bg={211, 204, 201, 255};
+
+/** The background color used by the application  */
+struct COLOR g_bg={211, 204, 201, 255}; 
+
+/** The text color used by the ui elemets (dark only). draw_text_white()
+ *  is used to draw white text.
+ */
 struct COLOR g_fg={80, 80, 80, 255};
+
+/** The background color used by the new game button  */
 struct COLOR g_button_bg={255, 153, 102,255};
+
+
+/** The background color used by the score field  */
 struct COLOR g_score_bg={143, 122, 102,255};
 
+/** The colors used by the tiles
+ *  They are according to exponent.
+ *  Example: exponent of 1 will use g_COLORS[1]
+ */
 struct COLOR g_COLORS[]={
     {230, 227, 232,255},
     {255, 127, 89,255},

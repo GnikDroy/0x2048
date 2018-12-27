@@ -6,11 +6,29 @@
  */
 #pragma once
 #include <stdio.h>
+#include <stdbool.h>
 
+/** @def SIZE
+ * The size of the matrix
+ */ 
 #define SIZE 4
+
+/** @def BASE
+ * The base used for the exponents.
+ */ 
 #define BASE 2
 
-typedef char bool;
+/** The game matrix type */
+typedef unsigned char Matrix[][SIZE];
+
+/**
+ * @brief Unsigned integer exponentiation.
+ * 
+ * @param base Base
+ * @param exponent Exponent
+ * @return Base^Exponent
+ */
+unsigned long pow_int(int base, int exponent);
 
 /**
  * @brief Write the game matrix to the stream.
@@ -27,7 +45,7 @@ typedef char bool;
  * @param matrix The game matrix that is to be printed.
  * @param stream The file stream to use.
  */
-void print_matrix(unsigned char matrix[][SIZE],FILE* stream);
+void print_matrix(Matrix matrix, FILE* stream);
 
 
 /**
@@ -38,7 +56,7 @@ void print_matrix(unsigned char matrix[][SIZE],FILE* stream);
  * @param matrix The game matrix.
  * @return Either 0 or 1
  */
-bool is_game_over(unsigned char matrix[][SIZE]);
+bool is_game_over(Matrix matrix);
 
 /**
  * @brief This clears out the game matrix
@@ -47,7 +65,7 @@ bool is_game_over(unsigned char matrix[][SIZE]);
  * 
  * @param matrix The game matrix.
  */
-void clear_matrix(unsigned char matrix[][SIZE]);
+void clear_matrix(Matrix matrix);
 
 /**
  * @brief Adds a value of 1 to random place to the matrix.
@@ -61,18 +79,18 @@ void clear_matrix(unsigned char matrix[][SIZE]);
  * the random value.
  * If no empty place is found a floating point exception will occur.
  */
-void add_random(unsigned char matrix[][SIZE]);
+void add_random(Matrix matrix);
 
 /**
  * @brief Calculates the score of a game matrix
  *
- * It score the matrix in a simple way.
+ * It scores the matrix in a simple way.
  * Each element in the matrix is used as exponents of the BASE. And the 
  * sum of all BASE^element is returned.
  * 
  * @return An integer that represents the current score
  */
-int calculate_score(unsigned char matrix[][SIZE]);
+unsigned long calculate_score(Matrix matrix);
 
 
 
@@ -90,7 +108,7 @@ int calculate_score(unsigned char matrix[][SIZE]);
  * 
  * @return If the shift was successful
  */
-bool shift_x(unsigned char matrix[][SIZE], bool opp);
+bool shift_x(Matrix matrix, bool opp);
 
 
 /**
@@ -105,7 +123,7 @@ bool shift_x(unsigned char matrix[][SIZE], bool opp);
  * 
  * @return If the merge was successful
  */
-bool merge_x(unsigned char matrix[][SIZE],bool opp);
+bool merge_x(Matrix matrix,bool opp);
 
 
 /**
@@ -118,7 +136,7 @@ bool merge_x(unsigned char matrix[][SIZE],bool opp);
  * @param opp The direction of the move.
  * 
  */
-void move_x(unsigned char matrix[][SIZE], bool opp);
+void move_x(Matrix matrix, bool opp);
 
 
 
@@ -134,7 +152,7 @@ void move_x(unsigned char matrix[][SIZE], bool opp);
  * 
  * @return If the shift was successful
  */
-bool shift_y(unsigned char matrix[][SIZE], bool opp);
+bool shift_y(Matrix matrix, bool opp);
 
 
 /**
@@ -149,7 +167,7 @@ bool shift_y(unsigned char matrix[][SIZE], bool opp);
  * 
  * @return If the merge was successful
  */
-bool merge_y(unsigned char matrix[][SIZE],bool opp);
+bool merge_y(Matrix matrix,bool opp);
 
 
 /**
@@ -162,6 +180,6 @@ bool merge_y(unsigned char matrix[][SIZE],bool opp);
  * @param opp The direction of the move.
  * 
  */
-void move_y(unsigned char matrix[][SIZE],bool opp);
+void move_y(Matrix matrix,bool opp);
 
 

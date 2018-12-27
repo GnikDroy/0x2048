@@ -84,6 +84,10 @@ If you wish to read the documentation install doxygen.
 
 `sudo apt-get install doxygen-gui`
 
+You might also need to install `graphviz` for visualizing the relations.
+
+`sudo apt-get install graphviz`
+
 Then you can create the docs by running `doxygen` inside the root folder.
 
 All the documentation will be created under the `docs` folder.
