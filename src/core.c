@@ -254,7 +254,7 @@ bool shift_y(Matrix matrix, bool opp)
 
 inline void move_y(Matrix matrix, bool opp)
 {
-    //Assigning values insted of evaluating directly to force both operations
+	//Assigning values insted of evaluating directly to force both operations
 	//Bypassing lazy 'OR' evaluation
 	bool a=shift_y(matrix,opp),b=merge_y(matrix,opp);
 	if( a||b) add_random(matrix);

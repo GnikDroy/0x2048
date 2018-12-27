@@ -11,26 +11,26 @@
 
 bool initSDL(SDL_Window **gWindow,SDL_Renderer** gRenderer)
 {
-    TTF_Init();
-    if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-    {
-        fprintf(stderr, "SDL could not initialize: %s\n", SDL_GetError());
-        return false;
-    }
-    *gWindow = SDL_CreateWindow( "2048", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
-    if( gWindow == NULL )
-    {
-        fprintf(stderr, "Window could not be created: %s\n", SDL_GetError());
-        return false;
-    }
-    *gRenderer = SDL_CreateRenderer( *gWindow, -1, SDL_RENDERER_ACCELERATED );
-    if( gRenderer == NULL )
-    {
-        fprintf(stderr, "Renderer could not be created: %s\n", SDL_GetError());
+	TTF_Init();
+	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+	{
+		fprintf(stderr, "SDL could not initialize: %s\n", SDL_GetError());
+		return false;
+	}
+	*gWindow = SDL_CreateWindow( "2048", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+	if( gWindow == NULL )
+	{
+		fprintf(stderr, "Window could not be created: %s\n", SDL_GetError());
+		return false;
+	}
+	*gRenderer = SDL_CreateRenderer( *gWindow, -1, SDL_RENDERER_ACCELERATED );
+	if( gRenderer == NULL )
+	{
+		fprintf(stderr, "Renderer could not be created: %s\n", SDL_GetError());
 		SDLclose(gWindow);
-        return false;
-    }
-    return true;
+		return false;
+	}
+	return true;
 }
 
 void draw_text(SDL_Renderer* gRenderer,TTF_Font* font,const char* text, SDL_Rect rect, SDL_Color color){
