@@ -2,16 +2,18 @@
 <h1 align="center"> 0x2048 </h1>
 
 <h3 align="center">A yet another implementation of the game 2048 in C!</h3>
-
-<img src="https://raw.githubusercontent.com/GnikDroy/0x2048/master/screenshots/2048.png">
 </p>
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/GnikDroy/0x2048/master/screenshots/2048.png">
+</p>
+
 
 
 ## Requirements
 - SDL2
 - SDL2_ttk
 
-Both of these libraries are needed to compile the program.
+
 
 ## Meeting the Requirements
 
@@ -19,7 +21,7 @@ Both of these libraries are needed to compile the program.
 
 Make sure that the requirements are met.
 
-Under Ubuntu:
+### Linux
 
 `sudo apt-get update`
 
@@ -31,16 +33,18 @@ Under Ubuntu:
 
 This installs the necessary libraries under linux.
 
-If you are using Windows you can download the libraries by goint to the
+### Windows
+If you are using Windows you can download the libraries by going to the
 SDL official website.
+
 
 ## How to compile
 
-After fullfilling the requirements we can move forward to compiling the program.
+After meeting the requirements, we can move forward to compilation of the program.
 
-Clone this github repo and make a folder named 'build' inside the project.
+Clone this github repo, and make a folder named 'build' inside the root folder.
 
-`git clone <Address in the URL>`
+`git clone https://github.com/GnikDroy/0x2048`
 
 `mkdir build`
 
@@ -58,6 +62,7 @@ The compiled program should be inside.
 
 I have not tested this under windows. If there are any platform issues, please start an issue.
 
+
 ## Running
 
 After compiling we can execute our game!
@@ -69,6 +74,7 @@ After compiling we can execute our game!
 Notice that there is a font file inside the directory. It is used by the game to render the text.
 
 The game won't run without this.
+
 
 
 ## Creating the documentation.
@@ -83,7 +89,8 @@ Then you can create the docs by running `doxygen` inside the root folder.
 
 All the documentation will be created under the `docs` folder.
 
+
 ## Tests
 
-Since this was a simple enough project. No tests were written. I do not 
+Since this was a simple enough project, no tests were written. I do not 
 intend to write them as well.
