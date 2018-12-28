@@ -27,42 +27,42 @@ unsigned long pow_int(int base, int exponent)
 	}
 }
 
-void clear_matrix(Matrix matrix)
+void clear_board(Board board)
 {
 	for (unsigned int x=0;x<SIZE;x++)
 	{
 		for(unsigned int y=0;y<SIZE;y++)
 		{
-			matrix[x][y]=0;
+			board[x][y]=0;
 		}
 	}
 }
 
-unsigned long calculate_score(Matrix matrix)
+unsigned long calculate_score(Board board)
 {
 	unsigned long score=0;
 	for (unsigned int x=0;x<SIZE;x++)
 	{
 		for(unsigned int y=0;y<SIZE;y++)
 		{
-			if(matrix[x][y]!=0)
+			if(board[x][y]!=0)
 			{
-				score+=pow_int(BASE,matrix[x][y]);
+				score+=pow_int(BASE,board[x][y]);
 			}
 		}
 	}
 	return score;
 }
 
-void print_matrix(Matrix matrix, FILE* stream)
+void print_board(Board board, FILE* stream)
 {
 	for (unsigned int x=0;x<SIZE;x++)
 	{
 		for(unsigned int y=0;y<SIZE;y++)
 		{
-			if (matrix[x][y])
+			if (board[x][y])
 			{
-				fprintf(stream,"%d," ,matrix[x][y]);
+				fprintf(stream,"%d," ,board[x][y]);
 			} else{
 				fprintf(stream,"-,");
 			}
@@ -72,7 +72,7 @@ void print_matrix(Matrix matrix, FILE* stream)
 	fprintf(stream,"\n");
 }
 
-void add_random(Matrix matrix)
+void add_random(Board board)
 {
 	unsigned int pos[SIZE*SIZE];
 	unsigned int len=0;
@@ -80,36 +80,36 @@ void add_random(Matrix matrix)
 	{
 		for (unsigned int y=0;y<SIZE;y++)
 		{
-			if (matrix[x][y]==0){
+			if (board[x][y]==0){
 			   pos[len]=x*SIZE+y;
 			   len++; 
 			}
 		}
 	}
 	unsigned int index=rand() % len;
-	matrix[pos[index]/SIZE][pos[index]%SIZE] = 1;
+	board[pos[index]/SIZE][pos[index]%SIZE] = 1;
 }
 
-bool is_game_over(Matrix matrix)
+bool is_game_over(Board board)
 {
 	for(unsigned int x=0;x<SIZE-1;x++)
 	{
 		for (unsigned int y=0;y<SIZE-1;y++)
 		{
-			if (  matrix[x][y]==matrix[x][y+1] ||
-				  matrix[x][y]==matrix[x+1][y] ||
-				  matrix[x][y]==0)
+			if (  board[x][y]==board[x][y+1] ||
+				  board[x][y]==board[x+1][y] ||
+				  board[x][y]==0)
 			{return false;}
 		}
-		if (matrix[x][SIZE-1] == matrix[x+1][SIZE-1] || 
-			matrix[x][SIZE-1] == 0) return false;
-		if (matrix[SIZE-1][x] == matrix[SIZE-1][x+1] ||
-			matrix[SIZE-1][x] == 0) return false;
+		if (board[x][SIZE-1] == board[x+1][SIZE-1] || 
+			board[x][SIZE-1] == 0) return false;
+		if (board[SIZE-1][x] == board[SIZE-1][x+1] ||
+			board[SIZE-1][x] == 0) return false;
 	}
 	return true;
 }
 
-bool shift_x(Matrix matrix, bool opp)
+bool shift_x(Board board, bool opp)
 {
 	bool moved=false;
 	int start=0,end=SIZE,increment=1;
@@ -124,11 +124,11 @@ bool shift_x(Matrix matrix, bool opp)
 		int index=start;
 		for(int y=start;y!=end;y+=increment)
 		{
-			if (matrix[x][y]!=0)
+			if (board[x][y]!=0)
 			{
-				matrix[x][index]=matrix[x][y];
+				board[x][index]=board[x][y];
 				if(index!=y) {
-					matrix[x][y]=0;
+					board[x][y]=0;
 					moved=true;
 				}
 				index+=increment;
@@ -137,7 +137,7 @@ bool shift_x(Matrix matrix, bool opp)
 	}
 	return moved;
 }
-bool merge_x(Matrix matrix, bool opp)
+bool merge_x(Board board, bool opp)
 {
 	bool merged=false;
 	int start=0,end=SIZE-1,increment=1;
@@ -152,34 +152,34 @@ bool merge_x(Matrix matrix, bool opp)
 		int index=start;
 		for(int y=start;y!=end;y+=increment)
 		{
-			if(matrix[x][y]!=0)
+			if(board[x][y]!=0)
 			{
-				if(matrix[x][y]==matrix[x][y+increment])
+				if(board[x][y]==board[x][y+increment])
 				{
-					matrix[x][index]=matrix[x][y]+1;
-					matrix[x][y+increment]=0;
-					if(index!=y) matrix[x][y]=0;
+					board[x][index]=board[x][y]+1;
+					board[x][y+increment]=0;
+					if(index!=y) board[x][y]=0;
 					merged=true;
 					index+=increment;
 				}
 				else
 				{
-					matrix[x][index]=matrix[x][y];
-					if(index!=y) matrix[x][y]=0;
+					board[x][index]=board[x][y];
+					if(index!=y) board[x][y]=0;
 					index+=increment;
 				}
 			}
 		}
 		
-		if(matrix[x][end]!=0)
+		if(board[x][end]!=0)
 		{
-			matrix[x][index]=matrix[x][end];
-			if(index!=end) matrix[x][end]=0;
+			board[x][index]=board[x][end];
+			if(index!=end) board[x][end]=0;
 		}
 	}
 	return merged;
 }
-bool merge_y(Matrix matrix, bool opp)
+bool merge_y(Board board, bool opp)
 {
 	bool merged=false;
 	int start=0,end=SIZE-1,increment=1;
@@ -194,34 +194,34 @@ bool merge_y(Matrix matrix, bool opp)
 		int index=start;
 		for(int x=start;x!=end;x+=increment)
 		{
-			if(matrix[x][y]!=0)
+			if(board[x][y]!=0)
 			{
-				if(matrix[x][y]==matrix[x+increment][y])
+				if(board[x][y]==board[x+increment][y])
 				{
-					matrix[index][y]=matrix[x][y]+1;
-					matrix[x+increment][y]=0;
-					if(index!=x) matrix[x][y]=0;
+					board[index][y]=board[x][y]+1;
+					board[x+increment][y]=0;
+					if(index!=x) board[x][y]=0;
 					index+=increment;
 					merged=true;
 				}
 				else
 				{
-					matrix[index][y]=matrix[x][y];
-					if(index!=x) matrix[x][y]=0;
+					board[index][y]=board[x][y];
+					if(index!=x) board[x][y]=0;
 					index+=increment;
 				}
 			}
 		}
-		if(matrix[end][y]!=0)
+		if(board[end][y]!=0)
 		{
-			matrix[index][y]=matrix[end][y];
-			if(index!=end) matrix[end][y]=0;
+			board[index][y]=board[end][y];
+			if(index!=end) board[end][y]=0;
 		}
 		
 	}
 	return merged;
 }
-bool shift_y(Matrix matrix, bool opp)
+bool shift_y(Board board, bool opp)
 {
 	bool moved=false;
 	int start=0,end=SIZE,increment=1;
@@ -236,12 +236,12 @@ bool shift_y(Matrix matrix, bool opp)
 		int index=start;
 		for(int x=start;x!=end;x+=increment)
 		{
-			if (matrix[x][y]!=0)
+			if (board[x][y]!=0)
 			{
-				matrix[index][y]=matrix[x][y];
+				board[index][y]=board[x][y];
 				if(index!=x)
 				{ 
-					matrix[x][y]=0;
+					board[x][y]=0;
 					moved=true;
 				}
 				index+=increment;
@@ -252,18 +252,18 @@ bool shift_y(Matrix matrix, bool opp)
 }
 
 
-inline void move_y(Matrix matrix, bool opp)
+inline void move_y(Board board, bool opp)
 {
 	//Assigning values insted of evaluating directly to force both operations
 	//Bypassing lazy 'OR' evaluation
-	bool a=shift_y(matrix,opp),b=merge_y(matrix,opp);
-	if( a||b) add_random(matrix);
+	bool a=shift_y(board,opp),b=merge_y(board,opp);
+	if( a||b) add_random(board);
 }
 
-inline void move_x(Matrix matrix, bool opp)
+inline void move_x(Board board, bool opp)
 {
 	//Assigning values insted of evaluating directly to force both operations
 	//Bypassing lazy 'OR' evaluation
-	bool a=shift_x(matrix,opp), b=merge_x(matrix,opp);
-	if(a||b)add_random(matrix);
+	bool a=shift_x(board,opp), b=merge_x(board,opp);
+	if(a||b)add_random(board);
 }

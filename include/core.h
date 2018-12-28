@@ -9,7 +9,7 @@
 #include <stdbool.h>
 
 /** @def SIZE
- * The size of the matrix
+ * The size of the board
  */ 
 #define SIZE 4
 
@@ -18,8 +18,8 @@
  */ 
 #define BASE 2
 
-/** The game matrix type */
-typedef unsigned char Matrix[][SIZE];
+/** The game board type */
+typedef unsigned char Board[][SIZE];
 
 /**
  * @brief Unsigned integer exponentiation.
@@ -31,9 +31,9 @@ typedef unsigned char Matrix[][SIZE];
 unsigned long pow_int(int base, int exponent);
 
 /**
- * @brief Write the game matrix to the stream.
+ * @brief Write the game board to the stream.
  *
- * The matrix is written as a comma seperated list of indices.
+ * The board is written as a comma seperated list of indices.
  * Each row is seperated by a '\n' character.
  * Each empty cell is represented by '-' character.
  * 
@@ -42,10 +42,10 @@ unsigned long pow_int(int base, int exponent);
  * You can use the constant stdout from <stdio.h> for printing to 
  * standard output
  * 
- * @param matrix The game matrix that is to be printed.
+ * @param board The game board that is to be printed.
  * @param stream The file stream to use.
  */
-void print_matrix(Matrix matrix, FILE* stream);
+void print_board(Board board, FILE* stream);
 
 
 /**
@@ -53,77 +53,77 @@ void print_matrix(Matrix matrix, FILE* stream);
  *
  * Checks for both movement and combinations of tiles.
  * 
- * @param matrix The game matrix.
+ * @param board The game board.
  * @return Either 0 or 1
  */
-bool is_game_over(Matrix matrix);
+bool is_game_over(Board board);
 
 /**
- * @brief This clears out the game matrix
+ * @brief This clears out the game board
  *
- * This zeros out the entire game matrix.
+ * This zeros out the entire game board.
  * 
- * @param matrix The game matrix.
+ * @param board The game board.
  */
-void clear_matrix(Matrix matrix);
+void clear_board(Board board);
 
 /**
- * @brief Adds a value of 1 to random place to the matrix.
+ * @brief Adds a value of 1 to random place to the board.
  *
- * The function adds 1 to a random place in the matrix.
+ * The function adds 1 to a random place in the board.
  * The 1 is placed in empty tiles. i.e tiles containing 0.
  * 1 is kept since you can use raise it with BASE to get required value.
- * Also it keeps the size of matrix to a low value.
+ * Also it keeps the size of board to a low value.
  * 
  * NOTE: It has no checks if there are any empty places for keeping 
  * the random value.
  * If no empty place is found a floating point exception will occur.
  */
-void add_random(Matrix matrix);
+void add_random(Board board);
 
 /**
- * @brief Calculates the score of a game matrix
+ * @brief Calculates the score of a game board
  *
- * It scores the matrix in a simple way.
- * Each element in the matrix is used as exponents of the BASE. And the 
+ * It scores the board in a simple way.
+ * Each element in the board is used as exponents of the BASE. And the 
  * sum of all BASE^element is returned.
  * 
  * @return An integer that represents the current score
  */
-unsigned long calculate_score(Matrix matrix);
+unsigned long calculate_score(Board board);
 
 
 
 
 
 /**
- * @brief Shifts the game matrix in X direction.
+ * @brief Shifts the game board in X direction.
  *
- * It shifts all the elements of the game matrix in the X direction.
- * If the direction is given as 0, it shifts the game matrix in the left
+ * It shifts all the elements of the game board in the X direction.
+ * If the direction is given as 0, it shifts the game board in the left
  * direction. Any other non zero value shifts it to the right direction.
  * 
- * @param matrix The game matrix.
+ * @param board The game board.
  * @param opp The direction of the shift.
  * 
  * @return If the shift was successful
  */
-bool shift_x(Matrix matrix, bool opp);
+bool shift_x(Board board, bool opp);
 
 
 /**
  * @brief Merges the elements in X direction.
  *
- * It merges consecutive successive elements of the game matrix in the X direction.
- * If the direction is given as 0, it merges the game matrix to the left
+ * It merges consecutive successive elements of the game board in the X direction.
+ * If the direction is given as 0, it merges the game board to the left
  * direction. Any other non zero value merges it to the right direction.
  * 
- * @param matrix The game matrix.
+ * @param board The game board.
  * @param opp The direction of the shift.
  * 
  * @return If the merge was successful
  */
-bool merge_x(Matrix matrix,bool opp);
+bool merge_x(Board board,bool opp);
 
 
 /**
@@ -132,42 +132,42 @@ bool merge_x(Matrix matrix,bool opp);
  * It simply performs shift_x() and merge_x().
  * If either of them were successful, it also calls add_random()
  * 
- * @param matrix The game matrix.
+ * @param board The game board.
  * @param opp The direction of the move.
  * 
  */
-void move_x(Matrix matrix, bool opp);
+void move_x(Board board, bool opp);
 
 
 
 /**
- * @brief Shifts the game matrix in Y direction.
+ * @brief Shifts the game board in Y direction.
  *
- * It shifts all the elements of the game matrix in the Y direction.
- * If the direction is given as 0, it shifts the game matrix in the top
+ * It shifts all the elements of the game board in the Y direction.
+ * If the direction is given as 0, it shifts the game board in the top
  * direction. Any other non-zero value shifts it to the bottom.
  * 
- * @param matrix The game matrix.
+ * @param board The game board.
  * @param opp The direction of the shift.
  * 
  * @return If the shift was successful
  */
-bool shift_y(Matrix matrix, bool opp);
+bool shift_y(Board board, bool opp);
 
 
 /**
  * @brief Merges the elements in Y direction.
  *
- * It merges consecutive successive elements of the game matrix in the Y direction.
- * If the direction is given as 0, it merges the game matrix to the top
+ * It merges consecutive successive elements of the game board in the Y direction.
+ * If the direction is given as 0, it merges the game board to the top
  * direction. Any other non zero value merges it to the bottom.
  * 
- * @param matrix The game matrix.
+ * @param board The game board.
  * @param opp The direction of the shift.
  * 
  * @return If the merge was successful
  */
-bool merge_y(Matrix matrix,bool opp);
+bool merge_y(Board board,bool opp);
 
 
 /**
@@ -176,10 +176,10 @@ bool merge_y(Matrix matrix,bool opp);
  * It simply performs shift_y() and merge_y().
  * If either of them were successful, it also calls add_random()
  * 
- * @param matrix The game matrix.
+ * @param board The game board.
  * @param opp The direction of the move.
  * 
  */
-void move_y(Matrix matrix,bool opp);
+void move_y(Board board,bool opp);
 
 
