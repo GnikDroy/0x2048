@@ -14,19 +14,19 @@ bool initSDL(SDL_Window **window,SDL_Renderer** renderer)
 	TTF_Init();
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 	{
-		fprintf(stderr, "SDL could not initialize: %s\n", SDL_GetError());
+		fprintf(stderr, "SDL could not initialize. SDL_ERROR: %s\n", SDL_GetError());
 		return false;
 	}
 	*window = SDL_CreateWindow( "2048", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
 	if( window == NULL )
 	{
-		fprintf(stderr, "Window could not be created: %s\n", SDL_GetError());
+		fprintf(stderr, "Window could not be created. SDL_ERROR: %s\n", SDL_GetError());
 		return false;
 	}
 	*renderer = SDL_CreateRenderer( *window, -1, SDL_RENDERER_ACCELERATED );
 	if( renderer == NULL )
 	{
-		fprintf(stderr, "Renderer could not be created: %s\n", SDL_GetError());
+		fprintf(stderr, "Renderer could not be created. SDL_ERROR: %s\n", SDL_GetError());
 		closeSDL(window);
 		return false;
 	}
@@ -76,7 +76,7 @@ void display_text(SDL_Renderer* renderer,const char* text,int size)
 	font= TTF_OpenFont(FONT_PATH, size);
 	if(font==NULL)
 	{
-		fprintf(stderr,"The required font was not found");
+		fprintf(stderr,"The required font was not found. TTF_OpenFont: %s\n",TTF_GetError());
 		exit(EXIT_FAILURE);
 	}
 	SDL_Color black = {g_fg.r,g_fg.g, g_fg.b};
@@ -200,7 +200,7 @@ void game_loop(Board board,SDL_Renderer* renderer)
 	font= TTF_OpenFont(FONT_PATH, CELL_FONT_SIZE);
 	if(font==NULL)
 	{
-		fprintf(stderr,"The required font was not found");
+		fprintf(stderr,"The required font was not found. TTF_OpenFont: %s\n",TTF_GetError());
 		exit(EXIT_FAILURE);
 	}
 

@@ -25,11 +25,8 @@ Make sure that the requirements are met.
 
 `sudo apt-get update`
 
-`sudo apt-get install cmake`
+`sudo apt-get install cmake libsdl2-dev libsdl2ttf-dev`
 
-`sudo apt-get install libsdl2-dev`
-
-`sudo apt-get install libsdl2ttf-dev`
 
 This installs the necessary libraries under linux.
 
