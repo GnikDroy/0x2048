@@ -38,7 +38,7 @@ void clear_board(Board board)
 	}
 }
 
-unsigned long calculate_score(Board board)
+unsigned long calculate_score(const Board board)
 {
 	unsigned long score = 0;
 	for (unsigned int x = 0; x < SIZE; x++)
@@ -54,7 +54,7 @@ unsigned long calculate_score(Board board)
 	return score;
 }
 
-void print_board(Board board, FILE *stream)
+void print_board(const Board board, FILE *stream)
 {
 	for (unsigned int x = 0; x < SIZE; x++)
 	{
@@ -93,7 +93,7 @@ void add_random(Board board)
 	board[pos[index] / SIZE][pos[index] % SIZE] = 1;
 }
 
-bool is_game_over(Board board)
+bool is_game_over(const Board board)
 {
 	for (unsigned int x = 0; x < SIZE - 1; x++)
 	{

@@ -91,7 +91,7 @@ void display_text(SDL_Renderer *renderer, const char *text, int size);
  * @param font The font for the tiles
  * @param board The game board.
  */
-void draw_board(SDL_Renderer *renderer, Board board, TTF_Font *font);
+void draw_board(SDL_Renderer *renderer, const Board board, TTF_Font *font);
 
 /**
  * @brief Draws the new game button. 
@@ -102,7 +102,7 @@ void draw_board(SDL_Renderer *renderer, Board board, TTF_Font *font);
  * @param font The font for the button
  * @param board The game board. Needed to reset game.
  */
-void draw_button(SDL_Renderer *renderer, Board board, TTF_Font *font);
+void draw_button(SDL_Renderer *renderer, TTF_Font *font);
 
 /**
  * @brief Handles the action of New Game button. 

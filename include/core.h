@@ -45,7 +45,7 @@ unsigned long pow_int(int base, int exponent);
  * @param board The game board that is to be printed.
  * @param stream The file stream to use.
  */
-void print_board(Board board, FILE *stream);
+void print_board(const Board board, FILE *stream);
 
 /**
  * @brief Checks if there are possible moves left on the game board.
@@ -55,7 +55,7 @@ void print_board(Board board, FILE *stream);
  * @param board The game board.
  * @return Either 0 or 1
  */
-bool is_game_over(Board board);
+bool is_game_over(const Board board);
 
 /**
  * @brief This clears out the game board
@@ -89,7 +89,7 @@ void add_random(Board board);
  * 
  * @return An integer that represents the current score
  */
-unsigned long calculate_score(Board board);
+unsigned long calculate_score(const Board board);
 
 /**
  * @brief Shifts the game board in X direction.

@@ -87,7 +87,7 @@ void display_text(SDL_Renderer *renderer, const char *text, int size)
 	TTF_CloseFont(font);
 }
 
-void draw_board(SDL_Renderer *renderer, Board board, TTF_Font *font)
+void draw_board(SDL_Renderer *renderer, const Board board, TTF_Font *font)
 {
 	int squareSize = (SCREEN_WIDTH - 2 * SCREEN_PAD) / SIZE - SCREEN_PAD;
 
@@ -139,7 +139,7 @@ void handle_move(SDL_Event e, Board board, SDL_Renderer *renderer)
 	}
 }
 
-void draw_button(SDL_Renderer *renderer, Board board, TTF_Font *font)
+void draw_button(SDL_Renderer *renderer, TTF_Font *font)
 {
 	char txt[] = "New Game";
 	SDL_Rect fillRect = {SCREEN_PAD / 2,
@@ -185,7 +185,7 @@ void render_game(SDL_Renderer *renderer, Board board, TTF_Font *font)
 	clear_screen(renderer);
 	draw_board(renderer, board, font);
 	draw_score(renderer, board, font);
-	draw_button(renderer, board, font);
+	draw_button(renderer, font);
 	SDL_RenderPresent(renderer);
 }
 
