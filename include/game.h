@@ -23,7 +23,7 @@
  * @param renderer The renderer for the game
  * @return If the initialization was successful.
  */
-bool initSDL(SDL_Window **window, SDL_Renderer** renderer);
+bool initSDL(SDL_Window **window, SDL_Renderer **renderer);
 
 /**
  * @brief Destroyes and closes the SDL window and closes SDK_ttk.
@@ -32,7 +32,7 @@ bool initSDL(SDL_Window **window, SDL_Renderer** renderer);
  * 
  * @param window The window of the game.
  */
-void closeSDL(SDL_Window** window);
+void closeSDL(SDL_Window **window);
 
 /**
  * @brief Draws text centered inside the rect. 
@@ -50,7 +50,7 @@ void closeSDL(SDL_Window** window);
  * @param rect The SDL_Rect object inside which text is written
  * @param color The color of the text
  */
-void draw_text(SDL_Renderer* renderer,TTF_Font* font,const char* text, SDL_Rect rect, SDL_Color color);
+void draw_text(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Rect rect, SDL_Color color);
 
 /**
  * @brief Draws white text centered inside a rect. 
@@ -62,8 +62,7 @@ void draw_text(SDL_Renderer* renderer,TTF_Font* font,const char* text, SDL_Rect 
  * @param text The text to write
  * @param rect The SDL_Rect object inside which text is written
  */
-void draw_white_text(SDL_Renderer* renderer,TTF_Font* font,const char* text, SDL_Rect rect);
-
+void draw_white_text(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Rect rect);
 
 /**
  * @brief Clears the window screen.
@@ -72,8 +71,7 @@ void draw_white_text(SDL_Renderer* renderer,TTF_Font* font,const char* text, SDL
  * 
  * @param renderer The renderer for the game
  */
-void clear_screen(SDL_Renderer* renderer);
-
+void clear_screen(SDL_Renderer *renderer);
 
 /**
  * @brief Draws black text centered inside the window. 
@@ -82,8 +80,7 @@ void clear_screen(SDL_Renderer* renderer);
  * @param size The size for the text
  * @param text The text to write
  */
-void display_text(SDL_Renderer* renderer,const char* text,int size);
-
+void display_text(SDL_Renderer *renderer, const char *text, int size);
 
 /**
  * @brief Draws the game tiles. 
@@ -94,7 +91,7 @@ void display_text(SDL_Renderer* renderer,const char* text,int size);
  * @param font The font for the tiles
  * @param board The game board.
  */
-void draw_board(SDL_Renderer* renderer, Board board, TTF_Font* font);
+void draw_board(SDL_Renderer *renderer, Board board, TTF_Font *font);
 
 /**
  * @brief Draws the new game button. 
@@ -105,7 +102,7 @@ void draw_board(SDL_Renderer* renderer, Board board, TTF_Font* font);
  * @param font The font for the button
  * @param board The game board. Needed to reset game.
  */
-void draw_button(SDL_Renderer* renderer, Board board, TTF_Font* font);
+void draw_button(SDL_Renderer *renderer, Board board, TTF_Font *font);
 
 /**
  * @brief Handles the action of New Game button. 
@@ -128,7 +125,7 @@ void button_handler(SDL_Event e, Board board);
  * @param font The font for the tiles
  * @param board The game board.
  */
-void draw_score(SDL_Renderer* renderer, Board board, TTF_Font* font);
+void draw_score(SDL_Renderer *renderer, Board board, TTF_Font *font);
 
 /**
  * @brief Draws everything for the game and renders it to screen. 
@@ -140,7 +137,7 @@ void draw_score(SDL_Renderer* renderer, Board board, TTF_Font* font);
  * @param font The font for the tiles
  * @param board The game board.
  */
-void render_game(SDL_Renderer* renderer, Board board, TTF_Font* font);
+void render_game(SDL_Renderer *renderer, Board board, TTF_Font *font);
 
 /**
  * @brief This is the main game loop that handles all events and drawing 
@@ -148,7 +145,7 @@ void render_game(SDL_Renderer* renderer, Board board, TTF_Font* font);
  * @param renderer The renderer for the game
  * @param board The game board.
  */
-void game_loop(Board board,SDL_Renderer* renderer);
+void game_loop(Board board, SDL_Renderer *renderer);
 
 /**
  * @brief Handles keyboard presses that correspond with the arrowkeys. 
@@ -161,5 +158,4 @@ void game_loop(Board board,SDL_Renderer* renderer);
  * @param e A Keyup event.
  * @param board The game board.
  */
-void handle_move(SDL_Event e, Board board, SDL_Renderer * renderer);
-
+void handle_move(SDL_Event e, Board board, SDL_Renderer *renderer);

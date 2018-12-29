@@ -10,12 +10,12 @@
 
 /** @def SIZE
  * The size of the board
- */ 
+ */
 #define SIZE 4
 
 /** @def BASE
  * The base used for the exponents.
- */ 
+ */
 #define BASE 2
 
 /** The game board type */
@@ -45,8 +45,7 @@ unsigned long pow_int(int base, int exponent);
  * @param board The game board that is to be printed.
  * @param stream The file stream to use.
  */
-void print_board(Board board, FILE* stream);
-
+void print_board(Board board, FILE *stream);
 
 /**
  * @brief Checks if there are possible moves left on the game board.
@@ -92,10 +91,6 @@ void add_random(Board board);
  */
 unsigned long calculate_score(Board board);
 
-
-
-
-
 /**
  * @brief Shifts the game board in X direction.
  *
@@ -110,7 +105,6 @@ unsigned long calculate_score(Board board);
  */
 bool shift_x(Board board, bool opp);
 
-
 /**
  * @brief Merges the elements in X direction.
  *
@@ -123,8 +117,7 @@ bool shift_x(Board board, bool opp);
  * 
  * @return If the merge was successful
  */
-bool merge_x(Board board,bool opp);
-
+bool merge_x(Board board, bool opp);
 
 /**
  * @brief Moves the elements in X direction.
@@ -137,8 +130,6 @@ bool merge_x(Board board,bool opp);
  * 
  */
 void move_x(Board board, bool opp);
-
-
 
 /**
  * @brief Shifts the game board in Y direction.
@@ -154,7 +145,6 @@ void move_x(Board board, bool opp);
  */
 bool shift_y(Board board, bool opp);
 
-
 /**
  * @brief Merges the elements in Y direction.
  *
@@ -167,8 +157,7 @@ bool shift_y(Board board, bool opp);
  * 
  * @return If the merge was successful
  */
-bool merge_y(Board board,bool opp);
-
+bool merge_y(Board board, bool opp);
 
 /**
  * @brief Moves the elements in Y direction.
@@ -180,6 +169,4 @@ bool merge_y(Board board,bool opp);
  * @param opp The direction of the move.
  * 
  */
-void move_y(Board board,bool opp);
-
-
+void move_y(Board board, bool opp);
