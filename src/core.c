@@ -6,7 +6,7 @@
  */
 #include <stdlib.h>
 #include <time.h>
-#include "../include/core.h"
+#include "core.h"
 
 unsigned long pow_int(int base, int exponent)
 {

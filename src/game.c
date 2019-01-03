@@ -4,8 +4,8 @@
  * @brief File containing implementation for the game's gui.
  *
  */
-#include "../include/styles.h"
-#include "../include/game.h"
+#include "styles.h"
+#include "game.h"
 #include <time.h>
 #include <stdlib.h>
 

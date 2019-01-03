@@ -5,9 +5,9 @@
  *
  */
 #pragma once
-#include "../include/core.h"
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_ttf.h"
+#include "core.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 
 /**
  * @brief Initializes the SDL window.
@@ -100,7 +100,6 @@ void draw_board(SDL_Renderer *renderer, const Board board, TTF_Font *font);
  * 
  * @param renderer The renderer for the game
  * @param font The font for the button
- * @param board The game board. Needed to reset game.
  */
 void draw_button(SDL_Renderer *renderer, TTF_Font *font);
 
