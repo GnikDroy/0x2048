@@ -271,7 +271,7 @@ int main(int argc, char **argv)
 
 	//Load Music Files
 	g_background_music = Mix_LoadMUS(BACKGROUND_MUSIC_PATH);
-	g_mix_music = Mix_LoadWAV(MIX_MUISC_PATH);
+	g_mix_music = Mix_LoadWAV(MIX_MUSIC_PATH);
 	if (g_background_music == NULL || g_mix_music == NULL)
 	{
 		fprintf(stderr, "Music files couldn't be loaded.");

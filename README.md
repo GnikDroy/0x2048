@@ -12,6 +12,7 @@
 ## Requirements
 - SDL2
 - SDL2_ttk
+- SDL2_mixer
 
 
 
@@ -25,7 +26,7 @@ Make sure that the requirements are met.
 
 `sudo apt-get update`
 
-`sudo apt-get install cmake libsdl2-dev libsdl2ttf-dev`
+`sudo apt-get install cmake libsdl2-dev libsdl2ttf-dev libsdl2-mixer-dev`
 
 
 This installs the necessary libraries under linux.
@@ -35,8 +36,6 @@ If you are using Windows, you can download the libraries <a href="https://www.li
 
 
 ## How to compile
-
-After meeting the requirements, we can move forward to compilation of the program.
 
 Clone this github repo, and make a folder named 'build' inside the root folder.
 
@@ -67,7 +66,7 @@ After compiling we can execute our game!
 
 `./2048`
 
-Notice that there is a font file inside the directory. It is used by the game to render the text.
+Notice that there is a font file and a few music files inside the directory. It is used by the game to render the text and play audio.
 
 The game won't run without this.
 
@@ -75,7 +74,7 @@ The game won't run without this.
 
 ## Creating the documentation.
 
-The project used Doxygen for managing it's documentation.
+The project uses Doxygen for managing it's documentation.
 
 If you wish to read the documentation install doxygen.
 
@@ -94,3 +93,9 @@ All the documentation will be created under the `docs` folder.
 
 Since this was a simple enough project, no tests were written. I do not 
 intend to write them as well.
+
+# Game Resources
+This project uses some of the audio from <a href="https://opengameart.org/">opengameart.com</a>
+
+- <a href="https://opengameart.org/content/hero-immortal">Background Music</a> <a href="http://cr1eativecommons.org/licenses/by-sa/3.0/">(license)</a>
+- <a href="https://opengameart.org/content/platformer-jumping-sounds"> Tile Mix Music </a> : <a href="https://creativecommons.org/licenses/by/3.0/">(license)</a>
