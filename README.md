@@ -95,8 +95,8 @@ All the documentation will be created under the `docs` folder.
 Since this was a simple enough project, no tests were written. I do not 
 intend to write them in the future as well.
 
-# Game Resources
+## Game Resources
 This project uses audio from <a href="https://opengameart.org/">opengameart.com</a>
 
 - <a href="https://opengameart.org/content/hero-immortal">Background Music</a> <a href="http://cr1eativecommons.org/licenses/by-sa/3.0/">(license)</a>
-- <a href="https://opengameart.org/content/platformer-jumping-sounds"> Tile Mix Music </a> : <a href="https://creativecommons.org/licenses/by/3.0/">(license)</a>
+- <a href="https://opengameart.org/content/platformer-jumping-sounds"> Tile Mix Music </a> <a href="https://creativecommons.org/licenses/by/3.0/">(license)</a>
