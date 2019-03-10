@@ -43,7 +43,7 @@ Clone this github repository, and make a folder named 'build' inside the project
 
 `mkdir build`
 
-Then we can us build the project inside this folder.
+Then, we can build the game inside this folder.
 
 `cd build`
 
