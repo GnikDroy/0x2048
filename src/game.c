@@ -8,6 +8,13 @@
 #include "game.h"
 #include <time.h>
 #include <stdlib.h>
+#include <SDL2/SDL_mixer.h>
+
+/** The pointer to the background music.*/
+Mix_Music *g_background_music;
+
+/** The pointer to the mix music chunk.*/
+Mix_Chunk *g_mix_music;
 
 bool initSDL(SDL_Window **window, SDL_Renderer **renderer)
 {
@@ -28,6 +35,11 @@ bool initSDL(SDL_Window **window, SDL_Renderer **renderer)
 	{
 		fprintf(stderr, "Renderer could not be created. SDL_ERROR: %s\n", SDL_GetError());
 		closeSDL(window);
+		return false;
+	}
+
+	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+	{
 		return false;
 	}
 	return true;
@@ -124,15 +136,19 @@ void handle_move(SDL_Event e, Board board, SDL_Renderer *renderer)
 	switch (e.key.keysym.sym)
 	{
 	case SDLK_UP:
+		Mix_PlayChannel(-1, g_mix_music, 0);
 		move_y(board, 0);
 		break;
 	case SDLK_DOWN:
+		Mix_PlayChannel(-1, g_mix_music, 0);
 		move_y(board, 1);
 		break;
 	case SDLK_LEFT:
+		Mix_PlayChannel(-1, g_mix_music, 0);
 		move_x(board, 0);
 		break;
 	case SDLK_RIGHT:
+		Mix_PlayChannel(-1, g_mix_music, 0);
 		move_x(board, 1);
 		break;
 	default:;
@@ -253,10 +269,23 @@ int main(int argc, char **argv)
 	if (!initSDL(&window, &renderer))
 		exit(EXIT_FAILURE);
 
+	//Load Music Files
+	g_background_music = Mix_LoadMUS(BACKGROUND_MUSIC_PATH);
+	g_mix_music = Mix_LoadWAV(MIX_MUISC_PATH);
+	if (g_background_music == NULL || g_mix_music == NULL)
+	{
+		fprintf(stderr, "Music files couldn't be loaded.");
+		exit(EXIT_FAILURE);
+	}
+
+	Mix_PlayMusic(g_background_music, -1);
 	display_text(renderer, "2048", TITLE_FONT_SIZE);
 	game_loop(board, renderer);
 
 	//Releases all resource
 	closeSDL(&window);
+	Mix_FreeMusic(g_background_music);
+	Mix_FreeChunk(g_mix_music);
+
 	return EXIT_SUCCESS;
 }

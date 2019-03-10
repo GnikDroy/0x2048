@@ -59,6 +59,17 @@
  */
 #define CELL_FONT_SIZE 40
 
+//Music Files
+/** @def MIX_MUISC_PATH
+ * The path to the sound that plays when tiles combine or appear.
+ */
+#define MIX_MUISC_PATH "mix.wav"
+
+/** @def BACKGROUND_MUSIC_PATH
+ * The path to the background music.
+ */
+#define BACKGROUND_MUSIC_PATH "background.mp3"
+
 struct COLOR
 {
     char r;
