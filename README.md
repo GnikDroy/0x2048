@@ -18,7 +18,7 @@
 
 ## Meeting the Requirements
 
-**You can use CMake to compile the project**
+**The project uses CMake to compile the project**
 
 Make sure that the requirements are met.
 
@@ -32,12 +32,12 @@ Make sure that the requirements are met.
 This installs the necessary libraries under linux.
 
 ### Windows
-If you are using Windows, you can download the libraries <a href="https://www.libsdl.org/download-2.0.php">here</a>.
+Under Windows, you can download the libraries <a href="https://www.libsdl.org/download-2.0.php">here</a>.
 
 
 ## How to compile
 
-Clone this github repo, and make a folder named 'build' inside the root folder.
+Clone this github repository, and make a folder named 'build' inside the project root folder.
 
 `git clone https://github.com/GnikDroy/0x2048`
 
@@ -51,32 +51,32 @@ Then we can us build the project inside this folder.
 
 `make`
 
-This should create a new folder named  `bin` inside the build folder.
+This will create a new folder named  `bin` inside the build folder.
 
 The compiled program should be inside. 
 
-I have not tested this under windows. If there are any platform issues, please start an issue.
+The game has not been tested under windows but should work perfectly fine. If there are any platform issues, please start an issue.
 
 
 ## Running
 
-After compiling we can execute our game!
+After compiling, we can execute the game!
 
 `cd bin`
 
 `./2048`
 
-Notice that there is a font file and a few music files inside the directory. It is used by the game to render the text and play audio.
+Notice that there is a font file and a few audio resources inside the `bin` directory. They are used by the game to render the text and play audio.
 
-The game won't run without this.
+The game won't run without these.
 
 
 
 ## Creating the documentation.
 
-The project uses Doxygen for managing it's documentation.
+The project uses Doxygen for managing its documentation.
 
-If you wish to read the documentation install doxygen.
+If you wish to read the documentation, install doxygen.
 
 `sudo apt-get install doxygen-gui`
 
@@ -84,7 +84,8 @@ You might also need to install `graphviz` for visualizing the relations.
 
 `sudo apt-get install graphviz`
 
-Then you can create the docs by running `doxygen` inside the root folder.
+
+You can create the docs by running `doxygen` inside the root folder.
 
 All the documentation will be created under the `docs` folder.
 
@@ -92,10 +93,10 @@ All the documentation will be created under the `docs` folder.
 ## Tests
 
 Since this was a simple enough project, no tests were written. I do not 
-intend to write them as well.
+intend to write them in the future as well.
 
 # Game Resources
-This project uses some of the audio from <a href="https://opengameart.org/">opengameart.com</a>
+This project uses audio from <a href="https://opengameart.org/">opengameart.com</a>
 
 - <a href="https://opengameart.org/content/hero-immortal">Background Music</a> <a href="http://cr1eativecommons.org/licenses/by-sa/3.0/">(license)</a>
 - <a href="https://opengameart.org/content/platformer-jumping-sounds"> Tile Mix Music </a> : <a href="https://creativecommons.org/licenses/by/3.0/">(license)</a>
